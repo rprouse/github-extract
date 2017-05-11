@@ -2,10 +2,10 @@
 
 /**
  * Usage:
- *   node ./index.js <repo path> <milestone number 1> <milestone number 2> ...
+ *   node ./index.js <repo path>
  *
  *   e.g.
- *   node ./index.js yaru22/github-issue-extractor 1 12 13
+ *   node ./index.js nunit/nunit
  */
 
 var _       = require('lodash'),
@@ -26,8 +26,7 @@ try {
 
 var ISSUES_API_URL = 'https://api.github.com/repos/%s/issues?state=open&per_page=100&access_token=%s';
 
-var repoPath         = process.argv[2],
-    milestoneNumbers = process.argv.slice(3);
+var repoPath         = process.argv[2]
 
 function collectIssues(outputFunction) {
   var issuesUrl = util.format(ISSUES_API_URL, repoPath, accessToken);
